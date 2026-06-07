@@ -2,7 +2,36 @@ import { List, ActionPanel, Action, Icon, Color, useNavigation, Form, Clipboard,
 import { useState, useMemo, useEffect } from "react";
 
 import { tools, categorySortIndex, iconFor } from "./shared/tools";
-import { openInApp, encodeInput } from "./shared/links";
+import { openInApp, encodeInput, APP_REPO_URL, OpenResult } from "./shared/links";
+
+/**
+ * Toast helper for callers that already attempted to open a deep link.
+ * If the launch failed, show an error toast with an action to open the
+ * Developer Tools Pro repository so the user can install the app.
+ */
+async function notifyLaunchResult(result: OpenResult, successTitle: string) {
+  if (result.ok) {
+    await showToast({ title: successTitle, style: Toast.Style.Success });
+    return;
+  }
+  if (result.reason === "not-installed") {
+    await showToast({
+      title: "Developer Tools Pro not installed",
+      message: "Click to view install instructions",
+      style: Toast.Style.Failure,
+      primaryAction: {
+        title: "Open Repository",
+        target: APP_REPO_URL,
+      },
+    });
+    return;
+  }
+  await showToast({
+    title: "Could not open Developer Tools Pro",
+    message: "Make sure the app is installed and launched once",
+    style: Toast.Style.Failure,
+  });
+}
 
 /**
  * A simple form to collect input for a tool before opening the app.
@@ -18,8 +47,9 @@ function ToolInputForm({ tool }: { tool: (typeof tools)[0] }) {
             title="Open Tool"
             onSubmit={async (values: { input: string }) => {
               const deepLink = `${tool.deepLink}${tool.deepLink.includes("?") ? "&" : "?"}input=${encodeInput(values.input || "")}`;
-              await openInApp(deepLink);
-              pop();
+              const result = await openInApp(deepLink);
+              await notifyLaunchResult(result, `Opened ${tool.name}`);
+              if (result.ok) pop();
             }}
           />
         </ActionPanel>
@@ -95,8 +125,8 @@ export default function Command() {
 
   const handleAction = async (tool: (typeof tools)[0]) => {
     if (!tool.supportsInput) {
-      await openInApp(tool.deepLink);
-      await showToast({ title: `Opened ${tool.name}` });
+      const result = await openInApp(tool.deepLink);
+      await notifyLaunchResult(result, `Opened ${tool.name}`);
       return;
     }
 
@@ -110,8 +140,16 @@ export default function Command() {
     if (clipboard && clipboard.trim().length > 0) {
       // If clipboard has content, open directly
       const deepLink = `${tool.deepLink}${tool.deepLink.includes("?") ? "&" : "?"}input=${encodeInput(clipboard)}`;
-      await openInApp(deepLink);
-      await showToast({ title: `Opened ${tool.name}`, message: "Used clipboard content" });
+      const result = await openInApp(deepLink);
+      if (result.ok) {
+        await showToast({
+          title: `Opened ${tool.name}`,
+          message: "Used clipboard content",
+          style: Toast.Style.Success,
+        });
+      } else {
+        await notifyLaunchResult(result, `Opening ${tool.name} failed`);
+      }
     } else {
       // Otherwise, push to input form
       push(<ToolInputForm tool={tool} />);

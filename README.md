@@ -80,6 +80,38 @@ open "devtpro://encoders_decoders/base64/encode?input=hello%20world"
 
 The first jumps to JSON Formatter; the second opens Base64 Encoder with "hello world" pre-filled.
 
+## Screenshots
+
+> Add three 1284×800 (or 2x) screenshots of the search list, pinned section, and Quick Convert before submitting to the Raycast Store. Reviewers strongly prefer an animated GIF or 3-frameStill PNG showing the search → action → deep-link flow.
+
+| Search & Pin | Quick Convert | Tool input form |
+| --- | --- | --- |
+| _placeholder_ | _placeholder_ | _placeholder_ |
+
+## Troubleshooting
+
+**The "Open Tool" action shows "Developer Tools Pro not installed"**
+
+The macOS app isn't installed, or hasn't been launched at least once so LaunchServices has registered the `devtpro://` URL scheme. Install [Developer Tools Pro](https://github.com/aadhil-kh/developer-tools-pro), launch it once, then try again.
+
+**`npm run lint` reports `Invalid owner` or `Invalid author`**
+
+The `author` and `owner` fields in `package.json` must match a registered Raycast user and organization. Sign in at [developers.raycast.com](https://developers.raycast.com), claim your handle, create an organization (if you haven't), then update `package.json` to match exactly.
+
+**`tools.json` is missing**
+
+Run `npm run generate-tools` (which reads from the sibling Flutter project) or `npm run build` (which does it for you via the `prebuild` hook).
+
+## Releasing to the Raycast Store
+
+1. Make sure `npm run lint` and `npm run build` both pass.
+2. Push to a public GitHub repository.
+3. Run `ray login` once (sign in with the same handle used in `package.json`).
+4. Run `ray store submit` from the project root. This opens a PR against [raycast/extensions](https://github.com/raycast/extensions) for Raycast review.
+5. Address any reviewer feedback on the PR. Approval typically takes 1–5 days.
+
+For the latest guidelines see the official [Submitting an Extension](https://developers.raycast.com/basics/submit-an-extension) docs.
+
 ## License
 
 MIT

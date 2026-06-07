@@ -4,7 +4,7 @@
   "title": "Developer Tools Pro",
   "description": "Browse and launch any of the 100+ tools in Developer Tools Pro from Raycast. Includes Quick Convert commands that pre-fill JSON Formatter, Base64 Encoder, URL Encoder/Decoder, and JWT Decoder with selected text or clipboard content.",
   "icon": "extension-icon.png",
-  "author": "aadhil-kh",
+  "author": "aadhil_kh",
   "owner": "aadhil-kh",
   "categories": [
     "Developer Tools",
