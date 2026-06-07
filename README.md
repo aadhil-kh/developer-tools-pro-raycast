@@ -2,6 +2,49 @@
 
 Browse and launch any of the 120+ tools in [Developer Tools Pro](https://github.com/aadhil-kh/developer-tools-pro) directly from Raycast — on both Raycast v1 (≥ 1.104.16) and Raycast 2.0.
 
+> **Not yet on the Raycast Store.** Install it from source for now — see [Installation](#installation) below. Once it's approved in the Store, you'll be able to install it with one click from [raycast.com](https://www.raycast.com).
+
+## Installation
+
+This extension isn't in the Raycast Store yet, so you'll build it locally from source. It takes about a minute.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) ≥ 18 (for `npm`)
+- [Raycast](https://www.raycast.com/) v1 (≥ 1.104.16) or Raycast 2.0 beta
+- [Developer Tools Pro](https://github.com/aadhil-kh/developer-tools-pro) installed and launched at least once (so macOS registers the `devtpro://` URL scheme via LaunchServices)
+
+### Steps
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/aadhil-kh/developer-tools-pro-raycast.git
+cd developer-tools-pro-raycast
+
+# 2. Install dependencies
+npm install
+
+# 3. Build the extension
+npm run build
+```
+
+Then open **Raycast → Extensions → ➕ Add Extension → Import Extension**, select the `developer-tools-pro-raycast` folder, and confirm.
+
+That's it. The **Search Tools** command will appear in Raycast root search. Type `Search Tools` (or anything matching) to open the browser.
+
+> **Note:** You do **not** need to clone the Flutter app or run `npm run generate-tools` — `tools.json` ships pre-built in the repo. Those commands are only for maintainers refreshing the tool index from a local Developer Tools Pro checkout.
+
+### Updating
+
+```bash
+cd developer-tools-pro-raycast
+git pull
+npm install      # in case deps changed
+npm run build
+```
+
+Raycast will pick up the new build automatically on next launch.
+
 ## Commands
 
 | Command | Description |

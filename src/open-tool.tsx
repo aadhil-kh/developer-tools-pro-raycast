@@ -1,4 +1,17 @@
-import { List, ActionPanel, Action, Icon, Color, useNavigation, Form, Clipboard, showToast, Toast, LocalStorage } from "@raycast/api";
+import { open } from "@raycast/api";
+import {
+  List,
+  ActionPanel,
+  Action,
+  Icon,
+  Color,
+  useNavigation,
+  Form,
+  Clipboard,
+  showToast,
+  Toast,
+  LocalStorage,
+} from "@raycast/api";
 import { useState, useMemo, useEffect } from "react";
 
 import { tools, categorySortIndex, iconFor } from "./shared/tools";
@@ -21,7 +34,9 @@ async function notifyLaunchResult(result: OpenResult, successTitle: string) {
       style: Toast.Style.Failure,
       primaryAction: {
         title: "Open Repository",
-        target: APP_REPO_URL,
+        onAction: () => {
+          open(APP_REPO_URL);
+        },
       },
     });
     return;
