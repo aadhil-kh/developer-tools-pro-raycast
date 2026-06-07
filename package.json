@@ -1,0 +1,47 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "developer-tools-pro",
+  "title": "Developer Tools Pro",
+  "description": "Browse and launch any of the 100+ tools in Developer Tools Pro from Raycast. Includes Quick Convert commands that pre-fill JSON Formatter, Base64 Encoder, URL Encoder/Decoder, and JWT Decoder with selected text or clipboard content.",
+  "icon": "extension-icon.png",
+  "author": "aadhil-kh",
+  "owner": "aadhil-kh",
+  "categories": [
+    "Developer Tools",
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "open-tool",
+      "title": "Search Tools",
+      "description": "Browse, pin, and launch any Developer Tools Pro tool",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.104.16"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "generate-tools": "node scripts/generate-tools.mjs",
+    "prebuild": "npm run generate-tools",
+    "build": "ray build",
+    "dev": "npm run generate-tools && ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint"
+  },
+  "preferences": [
+    {
+      "name": "flutterAppPath",
+      "title": "Flutter App Path",
+      "description": "Absolute path to the local Flutter project that contains `lib/features/shared/models/tool.dart`. Used by `npm run generate-tools` to refresh the tool index. Defaults to a sibling directory.",
+      "type": "textfield",
+      "default": "",
+      "required": false
+    }
+  ]
+}
