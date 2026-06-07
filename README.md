@@ -49,14 +49,9 @@ Raycast will pick up the new build automatically on next launch.
 
 | Command | Description |
 | --- | --- |
-| **Open Tool** | Searchable list of every tool. Press <kbd>Enter</kbd> to open in Developer Tools Pro. |
-| **Quick Format JSON** | Open JSON Formatter with selected text or clipboard pre-filled. |
-| **Quick Base64 Encode** | Open Base64 Encoder with input pre-filled. |
-| **Quick URL Encode** | Open URL Encoder with input pre-filled. |
-| **Quick URL Decode** | Open URL Decoder with input pre-filled. |
-| **Quick JWT Decode** | Open JWT Decoder with token pre-filled. |
+| **Search Tools** | Searchable list of every tool. Press <kbd>Enter</kbd> to open in Developer Tools Pro. |
 
-The Quick Convert commands accept an optional `input` argument. If omitted, they fall back to your clipboard contents — so you can select text anywhere, hit your hotkey, and the tool opens with the text ready to go.
+The search tool accepts an optional `input` argument. If omitted, it falls back to your clipboard contents — so you can select text anywhere, launch the tool, and it opens with the text ready to go.
 
 ## How it works
 
@@ -79,7 +74,6 @@ The extension calls `open("devtpro://...", "dev.aadhil.developer_tools_pro")`. T
 
 - [Developer Tools Pro](https://github.com/aadhil-kh/developer-tools-pro) installed and launched at least once (so macOS registers the `devtpro://` URL scheme via LaunchServices).
 - Raycast v1 (≥ 1.104.16) or Raycast 2.0 beta.
-- The sibling Flutter project at `../flutter_application_1` (for the tool index generator). Override with the `FLUTTER_APP_PATH` env var or `--flutter-app` flag.
 
 ## Development
 
@@ -127,9 +121,9 @@ The first jumps to JSON Formatter; the second opens Base64 Encoder with "hello w
 
 > Add three 1284×800 (or 2x) screenshots of the search list, pinned section, and Quick Convert before submitting to the Raycast Store. Reviewers strongly prefer an animated GIF or 3-frameStill PNG showing the search → action → deep-link flow.
 
-| Search & Pin | Quick Convert | Tool input form |
-| --- | --- | --- |
-| _placeholder_ | _placeholder_ | _placeholder_ |
+| Search & Pin | Tool input form |
+| --- | --- |
+| _placeholder_ | _placeholder_ |
 
 ## Troubleshooting
 
@@ -143,7 +137,7 @@ The `author` and `owner` fields in `package.json` must match a registered Raycas
 
 **`tools.json` is missing**
 
-Run `npm run generate-tools` (which reads from the sibling Flutter project) or `npm run build` (which does it for you via the `prebuild` hook).
+Run `npm run generate-tools` (which reads from the sibling Developer Tools Pro project) or `npm run build` (which does it for you via the `prebuild` hook).
 
 ## Releasing to the Raycast Store
 
