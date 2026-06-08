@@ -6,7 +6,7 @@
     "deepLink": "devtpro://converters/json_to_csv",
     "description": "Convert JSON data to CSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "csv",
@@ -22,7 +22,7 @@
     "deepLink": "devtpro://converters/json_to_toon",
     "description": "Convert JSON structures into TOON format",
     "supportsInput": true,
-    "iconName": "ComputerChip",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "toon",
@@ -37,7 +37,7 @@
     "deepLink": "devtpro://converters/json_to_tsv",
     "description": "Convert JSON data to TSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "tsv",
@@ -52,7 +52,7 @@
     "deepLink": "devtpro://converters/json_to_xml",
     "description": "Convert JSON data to XML format",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "xml",
@@ -67,7 +67,7 @@
     "deepLink": "devtpro://converters/json_to_yaml",
     "description": "Convert JSON data to YAML format",
     "supportsInput": true,
-    "iconName": "Document",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "yaml",
@@ -82,7 +82,7 @@
     "deepLink": "devtpro://converters/json_to_toml",
     "description": "Convert JSON data to TOML format",
     "supportsInput": true,
-    "iconName": "List",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "toml",
@@ -98,7 +98,7 @@
     "deepLink": "devtpro://converters/json_to_schema",
     "description": "Generate JSON Schema from JSON data",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "schema",
@@ -115,7 +115,7 @@
     "deepLink": "devtpro://converters/json_to_java",
     "description": "Generate Java classes from JSON",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "java",
@@ -133,7 +133,7 @@
     "deepLink": "devtpro://converters/json_to_csharp",
     "description": "Generate C# classes from JSON",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "csharp",
@@ -152,7 +152,7 @@
     "deepLink": "devtpro://converters/json_to_typescript",
     "description": "Generate TypeScript interfaces from JSON",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "typescript",
@@ -170,7 +170,7 @@
     "deepLink": "devtpro://converters/json_to_python",
     "description": "Generate Python dataclasses from JSON",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "python",
@@ -189,7 +189,7 @@
     "deepLink": "devtpro://converters/json_to_dart",
     "description": "Generate Dart classes from JSON",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "dart",
@@ -208,7 +208,7 @@
     "deepLink": "devtpro://converters/json_to_kotlin",
     "description": "Generate Kotlin data classes from JSON",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "kotlin",
@@ -227,7 +227,7 @@
     "deepLink": "devtpro://converters/json_to_swift",
     "description": "Generate Swift structs from JSON",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "swift",
@@ -246,7 +246,7 @@
     "deepLink": "devtpro://converters/json_to_go",
     "description": "Generate Go structs from JSON",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "go",
@@ -264,7 +264,7 @@
     "deepLink": "devtpro://code_converters/curl_to_java",
     "description": "Convert cURL commands to Java HTTP client code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "java",
@@ -282,7 +282,7 @@
     "deepLink": "devtpro://code_converters/curl_to_csharp",
     "description": "Convert cURL commands to C# HttpClient code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "csharp",
@@ -302,7 +302,7 @@
     "deepLink": "devtpro://code_converters/curl_to_python",
     "description": "Convert cURL commands to Python requests code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "python",
@@ -321,7 +321,7 @@
     "deepLink": "devtpro://code_converters/curl_to_javascript",
     "description": "Convert cURL commands to JavaScript fetch code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "javascript",
@@ -341,7 +341,7 @@
     "deepLink": "devtpro://code_converters/curl_to_typescript",
     "description": "Convert cURL commands to TypeScript fetch code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "typescript",
@@ -361,7 +361,7 @@
     "deepLink": "devtpro://code_converters/curl_to_go",
     "description": "Convert cURL commands to Go http code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "go",
@@ -380,7 +380,7 @@
     "deepLink": "devtpro://code_converters/curl_to_php",
     "description": "Convert cURL commands to PHP cURL code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "php",
@@ -398,7 +398,7 @@
     "deepLink": "devtpro://code_converters/curl_to_ruby",
     "description": "Convert cURL commands to Ruby Net::HTTP code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "ruby",
@@ -417,7 +417,7 @@
     "deepLink": "devtpro://code_converters/curl_to_swift",
     "description": "Convert cURL commands to Swift URLSession code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "swift",
@@ -437,7 +437,7 @@
     "deepLink": "devtpro://code_converters/curl_to_kotlin",
     "description": "Convert cURL commands to Kotlin OkHttp code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "kotlin",
@@ -457,7 +457,7 @@
     "deepLink": "devtpro://code_converters/curl_to_rust",
     "description": "Convert cURL commands to Rust reqwest code",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Terminal",
     "keywords": [
       "curl",
       "rust",
@@ -476,7 +476,7 @@
     "deepLink": "devtpro://converters/xml_to_csv",
     "description": "Convert XML data to CSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "Code",
     "keywords": [
       "xml",
       "csv",
@@ -490,7 +490,7 @@
     "deepLink": "devtpro://converters/xml_to_json",
     "description": "Convert XML data to JSON format",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "Code",
     "keywords": [
       "xml",
       "json",
@@ -505,7 +505,7 @@
     "deepLink": "devtpro://converters/xml_to_toon",
     "description": "Convert XML structures into TOON format",
     "supportsInput": true,
-    "iconName": "ComputerChip",
+    "iconName": "Code",
     "keywords": [
       "xml",
       "toon",
@@ -520,7 +520,7 @@
     "deepLink": "devtpro://converters/xml_to_tsv",
     "description": "Convert XML data to TSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "Code",
     "keywords": [
       "xml",
       "tsv",
@@ -550,7 +550,7 @@
     "deepLink": "devtpro://converters/xml_to_yaml",
     "description": "Convert XML data to YAML format",
     "supportsInput": true,
-    "iconName": "Document",
+    "iconName": "Code",
     "keywords": [
       "xml",
       "yaml",
@@ -564,7 +564,7 @@
     "deepLink": "devtpro://converters/xml_to_toml",
     "description": "Convert XML data to TOML format",
     "supportsInput": true,
-    "iconName": "List",
+    "iconName": "Code",
     "keywords": [
       "xml",
       "toml",
@@ -580,7 +580,7 @@
     "deepLink": "devtpro://converters/yaml_to_csv",
     "description": "Convert YAML data to CSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "Document",
     "keywords": [
       "yaml",
       "csv",
@@ -594,7 +594,7 @@
     "deepLink": "devtpro://converters/yaml_to_json",
     "description": "Convert YAML data to JSON format",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "Document",
     "keywords": [
       "yaml",
       "json",
@@ -609,7 +609,7 @@
     "deepLink": "devtpro://converters/yaml_to_toon",
     "description": "Convert YAML data to TOON format",
     "supportsInput": true,
-    "iconName": "ComputerChip",
+    "iconName": "Document",
     "keywords": [
       "yaml",
       "toon",
@@ -624,7 +624,7 @@
     "deepLink": "devtpro://converters/yaml_to_tsv",
     "description": "Convert YAML data to TSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "Document",
     "keywords": [
       "yaml",
       "tsv",
@@ -638,7 +638,7 @@
     "deepLink": "devtpro://converters/yaml_to_xml",
     "description": "Convert YAML data to XML format",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Document",
     "keywords": [
       "yaml",
       "xml",
@@ -652,7 +652,7 @@
     "deepLink": "devtpro://converters/yaml_to_toml",
     "description": "Convert YAML data to TOML format",
     "supportsInput": true,
-    "iconName": "List",
+    "iconName": "Document",
     "keywords": [
       "yaml",
       "toml",
@@ -668,7 +668,7 @@
     "deepLink": "devtpro://converters/toon_to_csv",
     "description": "Transform TOON content into CSV tables",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "ComputerChip",
     "keywords": [
       "toon",
       "csv",
@@ -684,7 +684,7 @@
     "deepLink": "devtpro://converters/toon_to_json",
     "description": "Transform TOON content into JSON objects",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "ComputerChip",
     "keywords": [
       "toon",
       "json",
@@ -699,7 +699,7 @@
     "deepLink": "devtpro://converters/toon_to_tsv",
     "description": "Transform TOON content into TSV tables",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "ComputerChip",
     "keywords": [
       "toon",
       "tsv",
@@ -715,7 +715,7 @@
     "deepLink": "devtpro://converters/toon_to_xml",
     "description": "Transform TOON content into XML documents",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "ComputerChip",
     "keywords": [
       "toon",
       "xml",
@@ -730,7 +730,7 @@
     "deepLink": "devtpro://converters/toon_to_yaml",
     "description": "Transform TOON content into YAML format",
     "supportsInput": true,
-    "iconName": "Document",
+    "iconName": "ComputerChip",
     "keywords": [
       "toon",
       "yaml",
@@ -745,7 +745,7 @@
     "deepLink": "devtpro://converters/toon_to_toml",
     "description": "Transform TOON content into TOML configuration",
     "supportsInput": true,
-    "iconName": "List",
+    "iconName": "ComputerChip",
     "keywords": [
       "toon",
       "toml",
@@ -761,7 +761,7 @@
     "deepLink": "devtpro://converters/csv_to_html",
     "description": "Convert CSV to HTML table",
     "supportsInput": true,
-    "iconName": "CodeBlock",
+    "iconName": "List",
     "keywords": [
       "csv",
       "html",
@@ -776,7 +776,7 @@
     "deepLink": "devtpro://converters/csv_to_json",
     "description": "Convert CSV data to JSON format",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "List",
     "keywords": [
       "csv",
       "json",
@@ -792,7 +792,7 @@
     "deepLink": "devtpro://converters/csv_to_toon",
     "description": "Convert CSV tables to TOON format",
     "supportsInput": true,
-    "iconName": "ComputerChip",
+    "iconName": "List",
     "keywords": [
       "csv",
       "toon",
@@ -808,7 +808,7 @@
     "deepLink": "devtpro://converters/csv_to_tsv",
     "description": "Convert CSV data to TSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "List",
     "keywords": [
       "csv",
       "tsv",
@@ -823,7 +823,7 @@
     "deepLink": "devtpro://converters/csv_to_xml",
     "description": "Convert CSV data to XML format",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "List",
     "keywords": [
       "csv",
       "xml",
@@ -837,7 +837,7 @@
     "deepLink": "devtpro://converters/csv_to_yaml",
     "description": "Convert CSV data to YAML format",
     "supportsInput": true,
-    "iconName": "Document",
+    "iconName": "List",
     "keywords": [
       "csv",
       "yaml",
@@ -867,7 +867,7 @@
     "deepLink": "devtpro://converters/tsv_to_csv",
     "description": "Convert TSV data to CSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "List",
     "keywords": [
       "tsv",
       "csv",
@@ -882,7 +882,7 @@
     "deepLink": "devtpro://converters/tsv_to_html",
     "description": "Convert TSV to HTML table",
     "supportsInput": true,
-    "iconName": "CodeBlock",
+    "iconName": "List",
     "keywords": [
       "tsv",
       "html",
@@ -897,7 +897,7 @@
     "deepLink": "devtpro://converters/tsv_to_json",
     "description": "Convert TSV data to JSON format",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "List",
     "keywords": [
       "tsv",
       "json",
@@ -912,7 +912,7 @@
     "deepLink": "devtpro://converters/tsv_to_toon",
     "description": "Convert TSV tables to TOON format",
     "supportsInput": true,
-    "iconName": "ComputerChip",
+    "iconName": "List",
     "keywords": [
       "tsv",
       "toon",
@@ -928,7 +928,7 @@
     "deepLink": "devtpro://converters/tsv_to_xml",
     "description": "Convert TSV data to XML format",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "List",
     "keywords": [
       "tsv",
       "xml",
@@ -942,7 +942,7 @@
     "deepLink": "devtpro://converters/tsv_to_yaml",
     "description": "Convert TSV data to YAML format",
     "supportsInput": true,
-    "iconName": "Document",
+    "iconName": "List",
     "keywords": [
       "tsv",
       "yaml",
@@ -972,7 +972,7 @@
     "deepLink": "devtpro://converters/toml_to_json",
     "description": "Convert TOML configuration to JSON format",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "json",
@@ -988,7 +988,7 @@
     "deepLink": "devtpro://converters/toml_to_yaml",
     "description": "Convert TOML configuration to YAML format",
     "supportsInput": true,
-    "iconName": "Document",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "yaml",
@@ -1004,7 +1004,7 @@
     "deepLink": "devtpro://converters/toml_to_xml",
     "description": "Convert TOML configuration to XML format",
     "supportsInput": true,
-    "iconName": "Code",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "xml",
@@ -1020,7 +1020,7 @@
     "deepLink": "devtpro://converters/toml_to_csv",
     "description": "Convert TOML data to CSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "csv",
@@ -1036,7 +1036,7 @@
     "deepLink": "devtpro://converters/toml_to_tsv",
     "description": "Convert TOML data to TSV format",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "tsv",
@@ -1052,7 +1052,7 @@
     "deepLink": "devtpro://converters/toml_to_toon",
     "description": "Convert TOML configuration to TOON format",
     "supportsInput": true,
-    "iconName": "ComputerChip",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "toon",
@@ -1068,7 +1068,7 @@
     "deepLink": "devtpro://formatters/json",
     "description": "Format and validate JSON",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "format",
@@ -1100,7 +1100,7 @@
     "deepLink": "devtpro://formatters/toml",
     "description": "Format and validate TOML configuration files",
     "supportsInput": true,
-    "iconName": "List",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "format",
@@ -1202,7 +1202,7 @@
     "deepLink": "devtpro://encoders_decoders/number_format",
     "description": "Convert numbers between bases, bit widths, floats, and codepoints",
     "supportsInput": false,
-    "iconName": "Pin",
+    "iconName": "Calculator",
     "keywords": [
       "number",
       "binary",
@@ -1650,7 +1650,7 @@
     "deepLink": "devtpro://cryptography/hash_generator",
     "description": "Generate cryptographic hashes",
     "supportsInput": true,
-    "iconName": "Tag",
+    "iconName": "Fingerprint",
     "keywords": [
       "hash",
       "md5",
@@ -1703,7 +1703,7 @@
     "deepLink": "devtpro://viewers/json_viewer",
     "description": "Visualize JSON data",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "view",
@@ -1733,7 +1733,7 @@
     "deepLink": "devtpro://viewers/csv_viewer",
     "description": "Visualize CSV data",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "List",
     "keywords": [
       "csv",
       "view",
@@ -1748,7 +1748,7 @@
     "deepLink": "devtpro://viewers/tsv_viewer",
     "description": "Visualize TSV data",
     "supportsInput": true,
-    "iconName": "Table",
+    "iconName": "List",
     "keywords": [
       "tsv",
       "view",
@@ -1779,7 +1779,7 @@
     "deepLink": "devtpro://viewers/toml_viewer",
     "description": "Visualize TOML configuration data",
     "supportsInput": true,
-    "iconName": "List",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "view",
@@ -1810,7 +1810,7 @@
     "deepLink": "devtpro://previewers/html",
     "description": "Real-time HTML preview with WebView rendering",
     "supportsInput": true,
-    "iconName": "CodeBlock",
+    "iconName": "Eye",
     "keywords": [
       "html",
       "preview",
@@ -1840,7 +1840,7 @@
     "deepLink": "devtpro://minifiers/json",
     "description": "Compact JSON data to save space",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "minify",
@@ -1870,7 +1870,7 @@
     "deepLink": "devtpro://minifiers/toml",
     "description": "Minify TOML configuration files",
     "supportsInput": true,
-    "iconName": "List",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "minify",
@@ -1886,7 +1886,7 @@
     "deepLink": "devtpro://validators/json",
     "description": "Validate JSON syntax and structure",
     "supportsInput": true,
-    "iconName": "Braces",
+    "iconName": "CodeBlock",
     "keywords": [
       "json",
       "validate",
@@ -1950,7 +1950,7 @@
     "deepLink": "devtpro://validators/toml",
     "description": "Validate TOML syntax and structure",
     "supportsInput": true,
-    "iconName": "List",
+    "iconName": "Cog",
     "keywords": [
       "toml",
       "validate",

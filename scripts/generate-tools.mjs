@@ -245,28 +245,27 @@ function mapIcon(dartIcon, toolName, category) {
   // Strip "Symbols." or "Icons." prefix, keep the icon name.
   const symbol = dartIcon ? dartIcon.split(".").pop() : null;
 
-  // --- 1. Tool-name overrides for "X → Y" converters ---
-  // Use the destination format's icon for clarity (the user converts *into* it).
-  if (/to\s+CSV/i.test(toolName)) return "Table";
-  if (/to\s+TSV/i.test(toolName)) return "Table";
-  if (/to\s+HTML/i.test(toolName)) return "CodeBlock";
-  if (/to\s+JSON/i.test(toolName)) return "Braces";
-  if (/to\s+XML/i.test(toolName)) return "Code";
-  if (/to\s+YAML/i.test(toolName)) return "Document";
-  if (/to\s+TOML/i.test(toolName)) return "List";
-  if (/to\s+TOON/i.test(toolName)) return "ComputerChip";
-  if (/to\s+Schema/i.test(toolName)) return "Tree";
-  if (/to\s+Java\b/i.test(toolName)) return "Code";
-  if (/to\s+C#|to\s+CSharp/i.test(toolName)) return "Code";
-  if (/to\s+TypeScript|to\s+JavaScript|to\s+Python|to\s+Dart|to\s+Kotlin|to\s+Swift|to\s+Go|to\s+Ruby|to\s+PHP|to\s+Rust/i.test(toolName)) {
-    return "Code";
-  }
+  // --- 1. Source-format overrides ---
+  // Assign icons based on the *input* format so tools sharing the same
+  // source type have a common icon, regardless of what they convert into.
+  if (/^JSON\b/i.test(toolName)) return "CodeBlock";
+  if (/^XML\b/i.test(toolName)) return "Code";
+  if (/^YAML\b/i.test(toolName)) return "Document";
+  if (/^CSV\b/i.test(toolName)) return "List";
+  if (/^TSV\b/i.test(toolName)) return "List";
+  if (/^TOML\b/i.test(toolName)) return "Cog";
+  if (/^TOON\b/i.test(toolName)) return "ComputerChip";
   if (/^cURL\b/i.test(toolName)) return "Terminal";
+
+  // --- 1b. Specific tool overrides ---
+  if (/Number Format/i.test(toolName)) return "Calculator";
+  if (/Hash Generator/i.test(toolName)) return "Fingerprint";
+  if (/HTML Preview/i.test(toolName)) return "Eye";
 
   // --- 2. Direct symbol → Raycast icon mapping ---
   const SYMBOL_MAP = {
     // JSON
-    data_object: "Braces",
+    data_object: "CodeBlock",
     data_array: "Snippets",
 
     // XML / code
@@ -280,11 +279,11 @@ function mapIcon(dartIcon, toolName, category) {
     memory: "ComputerChip",
 
     // CSV / TSV
-    csv: "Table",
-    tsv: "Table",
-    table: "Table",
-    table_view: "Table",
-    table_chart: "Table",
+    csv: "List",
+    tsv: "List",
+    table: "List",
+    table_view: "List",
+    table_chart: "List",
 
     // TOML
     list_alt: "List",
