@@ -28,20 +28,9 @@
   },
   "scripts": {
     "generate-tools": "node scripts/generate-tools.mjs",
-    "prebuild": "npm run generate-tools",
     "build": "ray build",
-    "dev": "npm run generate-tools && ray develop",
+    "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint"
-  },
-  "preferences": [
-    {
-      "name": "flutterAppPath",
-      "title": "Flutter App Path",
-      "description": "Absolute path to the local Flutter project that contains `lib/features/shared/models/tool.dart`. Used by `npm run generate-tools` to refresh the tool index. Defaults to a sibling directory.",
-      "type": "textfield",
-      "default": "",
-      "required": false
-    }
-  ]
+  }
 }
