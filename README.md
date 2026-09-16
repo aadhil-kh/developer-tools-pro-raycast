@@ -1,60 +1,36 @@
-# Developer Tools Pro for Raycast
+# DevT Pro for Raycast
 
-Launch Developer Tools Pro tools directly from Raycast. This extension is a public integration for the proprietary Developer Tools Pro macOS app; the app itself and its source code are not included here.
+Search, pin, and launch DevT Pro tools from Raycast on macOS and Windows. This extension connects Raycast to the DevT Pro app. The app and its source code are not included here.
 
-> **Not yet on the Raycast Store.** Install from this repository for now. Once the extension is approved, it will be available through [raycast.com](https://www.raycast.com).
+## Requirements
 
-## Install
+- DevT Pro installed and opened at least once. Opening the app registers its `devtpro://` link with your system, and this extension uses that link to launch tools.
+- Raycast for macOS (Raycast 2, or v1.104.16 or later) or Raycast for Windows.
 
-### Before you start
+## Usage
 
-- Install Developer Tools Pro and open it once. This registers its `devtpro://` URL scheme with macOS.
-- Install [Raycast](https://www.raycast.com/) v1 (1.104.16 or later) or Raycast 2.0.
-- Install [Node.js](https://nodejs.org/) 18 or later.
+Run **Search Tools** in Raycast, then search by tool name, category, description, or keyword.
 
-### From this repository
+| Action | macOS | Windows |
+| --- | --- | --- |
+| Open Tool | <kbd>↵</kbd> | <kbd>Enter</kbd> |
+| Open Tool with Input | <kbd>⌘</kbd> <kbd>E</kbd> | <kbd>Ctrl</kbd> <kbd>E</kbd> |
+| Pin Tool / Unpin Tool | <kbd>⌘</kbd> <kbd>.</kbd> (Raycast v1: <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd>) | <kbd>Ctrl</kbd> <kbd>.</kbd> |
+| Copy Deep Link | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>C</kbd> | <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>C</kbd> |
 
-```bash
-git clone https://github.com/aadhil-kh/developer-tools-pro-raycast.git
-cd developer-tools-pro-raycast
-npm install
-npm run build
-```
-
-In Raycast, open **Extensions → Add Extension → Import Extension**, select the `developer-tools-pro-raycast` folder, and confirm.
-
-The **Search Tools** command will then appear in Raycast. Search for a Developer Tools Pro tool and press <kbd>Enter</kbd> to open it.
-
-> The extension includes its published tool index. You do not need access to the Developer Tools Pro source code or need to run `npm run generate-tools`.
-
-## Update
-
-```bash
-cd developer-tools-pro-raycast
-git pull
-npm install
-npm run build
-```
-
-Restart Raycast if it does not pick up the update automatically.
-
-## What it does
-
-| Command | Description |
-| --- | --- |
-| **Search Tools** | Search and launch Developer Tools Pro tools. |
-
-The command accepts optional input. With no input, it uses your clipboard when the selected tool supports it, so selected text can be sent straight to a tool.
+- **Open Tool** sends your clipboard text to tools that accept input. If the clipboard is empty, Raycast asks you for the input.
+- **Open Tool with Input** always lets you review or type the input first.
+- Pinned tools appear at the top of the list.
 
 ## Troubleshooting
 
-### “Developer Tools Pro not installed”
+### "DevT Pro Not Installed"
 
-Install Developer Tools Pro and open it at least once, then try again. Opening the app lets macOS register the `devtpro://` link used by this extension.
+Install DevT Pro and open it once, then try again. Opening the app registers the `devtpro://` link used by this extension.
 
-### Raycast cannot import the extension
+### A tool doesn't open
 
-Run `npm run build` again from the repository folder, then retry the import. Make sure you are using a supported version of Raycast and Node.js.
+Make sure DevT Pro is up to date. Older versions of the app might not support every tool listed in Raycast.
 
 ## License
 

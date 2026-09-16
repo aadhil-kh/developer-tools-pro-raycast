@@ -1,68 +1,69 @@
-import { open } from "@raycast/api";
 import {
-  List,
-  ActionPanel,
   Action,
-  Icon,
-  Color,
-  useNavigation,
-  Form,
+  ActionPanel,
   Clipboard,
+  Color,
+  Form,
+  Icon,
+  Keyboard,
+  List,
+  LocalStorage,
+  open,
   showToast,
   Toast,
-  LocalStorage,
+  useNavigation,
 } from "@raycast/api";
-import { useState, useMemo, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import { tools, categorySortIndex, iconFor } from "./shared/tools";
-import { openInApp, encodeInput, APP_REPO_URL, OpenResult } from "./shared/links";
+import { APP_REPO_URL, openInApp, OpenResult, withInput } from "./shared/links";
+import { categorySortIndex, iconFor, ToolEntry, tools } from "./shared/tools";
+
+const PINNED_TOOLS_KEY = "pinned-tools";
 
 /**
- * Toast helper for callers that already attempted to open a deep link.
- * If the launch failed, show an error toast with an action to open the
- * Developer Tools Pro repository so the user can install the app.
+ * Show a toast for a deep link launch. If the launch failed, offer a link to
+ * the DevT Pro repository so the user can install the app.
  */
-async function notifyLaunchResult(result: OpenResult, successTitle: string) {
+async function notifyLaunchResult(result: OpenResult, successTitle: string, successMessage?: string) {
   if (result.ok) {
-    await showToast({ title: successTitle, style: Toast.Style.Success });
+    await showToast({ title: successTitle, message: successMessage, style: Toast.Style.Success });
     return;
   }
   if (result.reason === "not-installed") {
     await showToast({
-      title: "Developer Tools Pro not installed",
-      message: "Click to view install instructions",
+      title: "DevT Pro Not Installed",
+      message: "Install the app and open it once",
       style: Toast.Style.Failure,
       primaryAction: {
         title: "Open Repository",
-        onAction: () => {
-          open(APP_REPO_URL);
-        },
+        onAction: () => open(APP_REPO_URL),
       },
     });
     return;
   }
   await showToast({
-    title: "Could not open Developer Tools Pro",
-    message: "Make sure the app is installed and launched once",
+    title: "Could Not Open DevT Pro",
+    message: "Make sure the app is installed and has been opened once",
     style: Toast.Style.Failure,
   });
 }
 
 /**
- * A simple form to collect input for a tool before opening the app.
+ * A form to collect input for a tool before opening the app.
  */
-function ToolInputForm({ tool }: { tool: (typeof tools)[0] }) {
+function ToolInputForm({ tool, initialInput = "" }: { tool: ToolEntry; initialInput?: string }) {
   const { pop } = useNavigation();
 
   return (
     <Form
+      navigationTitle={tool.name}
       actions={
         <ActionPanel>
           <Action.SubmitForm
             title="Open Tool"
+            icon={Icon.ArrowRight}
             onSubmit={async (values: { input: string }) => {
-              const deepLink = `${tool.deepLink}${tool.deepLink.includes("?") ? "&" : "?"}input=${encodeInput(values.input || "")}`;
-              const result = await openInApp(deepLink);
+              const result = await openInApp(withInput(tool.deepLink, values.input ?? ""));
               await notifyLaunchResult(result, `Opened ${tool.name}`);
               if (result.ok) pop();
             }}
@@ -71,7 +72,7 @@ function ToolInputForm({ tool }: { tool: (typeof tools)[0] }) {
       }
     >
       <Form.Description text={`Provide input for ${tool.name}`} />
-      <Form.TextArea id="input" title="Input" placeholder="Enter text here..." autoFocus />
+      <Form.TextArea id="input" title="Input" placeholder="Enter text here" defaultValue={initialInput} autoFocus />
     </Form>
   );
 }
@@ -79,9 +80,9 @@ function ToolInputForm({ tool }: { tool: (typeof tools)[0] }) {
 /**
  * Group tools by category, with pinned tools at the very top.
  */
-function groupByCategory(toolList: typeof tools, pinnedIds: string[]) {
-  const groups: Record<string, typeof tools> = {};
-  const pinned: typeof tools = [];
+function groupByCategory(toolList: ToolEntry[], pinnedIds: string[]) {
+  const groups: Record<string, ToolEntry[]> = {};
+  const pinned: ToolEntry[] = [];
 
   for (const tool of toolList) {
     if (pinnedIds.includes(tool.route)) {
@@ -109,72 +110,65 @@ function groupByCategory(toolList: typeof tools, pinnedIds: string[]) {
   return { sortedCategories, groups, pinned };
 }
 
+async function readClipboardText(): Promise<string> {
+  try {
+    return (await Clipboard.readText()) ?? "";
+  } catch {
+    return "";
+  }
+}
+
 export default function Command() {
   const [searchText, setSearchText] = useState("");
   const [pinnedIds, setPinnedIds] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { push } = useNavigation();
 
-  // Load pins from LocalStorage
   useEffect(() => {
-    LocalStorage.getItem<string>("pinned-tools").then((val) => {
-      if (val) {
+    LocalStorage.getItem<string>(PINNED_TOOLS_KEY)
+      .then((val) => {
+        if (!val) return;
         try {
-          setPinnedIds(JSON.parse(val));
-        } catch (e) {
+          const parsed: unknown = JSON.parse(val);
+          if (Array.isArray(parsed)) setPinnedIds(parsed.filter((id): id is string => typeof id === "string"));
+        } catch {
           setPinnedIds([]);
         }
-      }
-    });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const togglePin = async (route: string) => {
     const isPinned = pinnedIds.includes(route);
     const newPins = isPinned ? pinnedIds.filter((id) => id !== route) : [...pinnedIds, route];
     setPinnedIds(newPins);
-    await LocalStorage.setItem("pinned-tools", JSON.stringify(newPins));
+    await LocalStorage.setItem(PINNED_TOOLS_KEY, JSON.stringify(newPins));
     await showToast({
-      title: isPinned ? "Unpinned tool" : "Pinned tool",
+      title: isPinned ? "Unpinned Tool" : "Pinned Tool",
       style: Toast.Style.Success,
     });
   };
 
-  const handleAction = async (tool: (typeof tools)[0]) => {
+  const handleOpen = async (tool: ToolEntry) => {
     if (!tool.supportsInput) {
       const result = await openInApp(tool.deepLink);
       await notifyLaunchResult(result, `Opened ${tool.name}`);
       return;
     }
 
-    let clipboard = "";
-    try {
-      clipboard = (await Clipboard.readText()) || "";
-    } catch (e) {
-      clipboard = "";
-    }
-
-    if (clipboard && clipboard.trim().length > 0) {
-      // If clipboard has content, open directly
-      const deepLink = `${tool.deepLink}${tool.deepLink.includes("?") ? "&" : "?"}input=${encodeInput(clipboard)}`;
-      const result = await openInApp(deepLink);
-      if (result.ok) {
-        await showToast({
-          title: `Opened ${tool.name}`,
-          message: "Used clipboard content",
-          style: Toast.Style.Success,
-        });
-      } else {
-        await notifyLaunchResult(result, `Opening ${tool.name} failed`);
-      }
+    const clipboard = await readClipboardText();
+    if (clipboard.trim().length > 0) {
+      const result = await openInApp(withInput(tool.deepLink, clipboard));
+      await notifyLaunchResult(result, `Opened ${tool.name}`, "Used clipboard content");
     } else {
-      // Otherwise, push to input form
       push(<ToolInputForm tool={tool} />);
     }
   };
 
-  // Filter by name/category/keywords when the user types.
+  // Filter by name/category/description/keywords when the user types.
   const filtered = useMemo(() => {
-    if (!searchText.trim()) return tools;
-    const q = searchText.toLowerCase();
+    const q = searchText.trim().toLowerCase();
+    if (!q) return tools;
     return tools.filter(
       (t) =>
         t.name.toLowerCase().includes(q) ||
@@ -189,70 +183,56 @@ export default function Command() {
     [filtered, pinnedIds],
   );
 
+  const renderItem = (tool: ToolEntry, isPinned: boolean) => (
+    <List.Item
+      key={tool.route}
+      title={tool.name}
+      subtitle={tool.description}
+      icon={iconFor(tool)}
+      accessories={isPinned ? [{ icon: { source: Icon.Pin, tintColor: Color.Yellow }, tooltip: "Pinned" }] : []}
+      actions={
+        <ActionPanel>
+          <ActionPanel.Section>
+            <Action title="Open Tool" icon={Icon.ArrowRight} onAction={() => handleOpen(tool)} />
+            {tool.supportsInput && (
+              <Action
+                title="Open Tool with Input"
+                icon={Icon.TextInput}
+                shortcut={Keyboard.Shortcut.Common.Edit}
+                onAction={async () => push(<ToolInputForm tool={tool} initialInput={await readClipboardText()} />)}
+              />
+            )}
+          </ActionPanel.Section>
+          <ActionPanel.Section>
+            <Action
+              title={isPinned ? "Unpin Tool" : "Pin Tool"}
+              icon={isPinned ? Icon.PinDisabled : Icon.Pin}
+              shortcut={Keyboard.Shortcut.Common.Pin}
+              onAction={() => togglePin(tool.route)}
+            />
+            <Action.CopyToClipboard
+              title="Copy Deep Link"
+              content={tool.deepLink}
+              shortcut={Keyboard.Shortcut.Common.Copy}
+            />
+          </ActionPanel.Section>
+        </ActionPanel>
+      }
+    />
+  );
+
   return (
     <List
-      searchBarPlaceholder="Search 120+ developer tools…"
+      isLoading={isLoading}
+      searchBarPlaceholder={`Search ${tools.length} developer tools`}
       onSearchTextChange={setSearchText}
       searchText={searchText}
-      throttle
     >
-      {pinned.length > 0 && (
-        <List.Section title="Pinned Tools">
-          {pinned.map((tool) => (
-            <List.Item
-              key={tool.route}
-              title={tool.name}
-              subtitle={tool.description}
-              keywords={tool.keywords}
-              icon={{ source: Icon.Star, tintColor: Color.Yellow }}
-              actions={
-                <ActionPanel>
-                  <Action title="Open Tool" icon={Icon.ArrowRight} onAction={() => handleAction(tool)} />
-                  <Action
-                    title="Unpin Tool"
-                    icon={Icon.PinDisabled}
-                    shortcut={{ modifiers: ["cmd", "shift"], key: "p" }}
-                    onAction={() => togglePin(tool.route)}
-                  />
-                  <Action.CopyToClipboard
-                    title="Copy devtpro:// Link"
-                    content={tool.deepLink}
-                    shortcut={{ modifiers: ["cmd", "shift"], key: "c" }}
-                  />
-                </ActionPanel>
-              }
-            />
-          ))}
-        </List.Section>
-      )}
-
+      <List.EmptyView icon={Icon.MagnifyingGlass} title="No Matching Tools" description="Try a different search term" />
+      {pinned.length > 0 && <List.Section title="Pinned">{pinned.map((tool) => renderItem(tool, true))}</List.Section>}
       {sortedCategories.map((category) => (
         <List.Section key={category} title={category}>
-          {groups[category].map((tool) => (
-            <List.Item
-              key={tool.route}
-              title={tool.name}
-              subtitle={tool.description}
-              keywords={tool.keywords}
-              icon={iconFor(tool)}
-              actions={
-                <ActionPanel>
-                  <Action title="Open Tool" icon={Icon.ArrowRight} onAction={() => handleAction(tool)} />
-                  <Action
-                    title="Pin Tool"
-                    icon={Icon.Pin}
-                    shortcut={{ modifiers: ["cmd", "shift"], key: "p" }}
-                    onAction={() => togglePin(tool.route)}
-                  />
-                  <Action.CopyToClipboard
-                    title="Copy devtpro:// Link"
-                    content={tool.deepLink}
-                    shortcut={{ modifiers: ["cmd", "shift"], key: "c" }}
-                  />
-                </ActionPanel>
-              }
-            />
-          ))}
+          {groups[category].map((tool) => renderItem(tool, false))}
         </List.Section>
       ))}
     </List>
