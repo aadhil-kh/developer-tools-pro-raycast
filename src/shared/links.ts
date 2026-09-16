@@ -11,10 +11,10 @@ import { open } from "@raycast/api";
 export const APP_BUNDLE_ID = "dev.aadhil.developer_tools_pro";
 
 /**
- * Public GitHub repository for DevT Pro. Linked from error toasts
- * when the app isn't installed so the user can install it.
+ * DevT Pro website. Linked from error toasts when the app isn't installed so
+ * the user can download it.
  */
-export const APP_REPO_URL = "https://devtpro.app";
+export const APP_WEBSITE_URL = "https://devtpro.app";
 
 /**
  * Result of {@link openInApp}. If the launch failed, `ok` is `false` and the

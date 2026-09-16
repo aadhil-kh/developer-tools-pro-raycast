@@ -15,14 +15,14 @@ import {
 } from "@raycast/api";
 import { useEffect, useMemo, useState } from "react";
 
-import { APP_REPO_URL, openInApp, OpenResult, withInput } from "./shared/links";
+import { APP_WEBSITE_URL, openInApp, OpenResult, withInput } from "./shared/links";
 import { categorySortIndex, iconFor, ToolEntry, tools } from "./shared/tools";
 
 const PINNED_TOOLS_KEY = "pinned-tools";
 
 /**
  * Show a toast for a deep link launch. If the launch failed, offer a link to
- * the DevT Pro repository so the user can install the app.
+ * the DevT Pro website so the user can install the app.
  */
 async function notifyLaunchResult(result: OpenResult, successTitle: string, successMessage?: string) {
   if (result.ok) {
@@ -35,8 +35,8 @@ async function notifyLaunchResult(result: OpenResult, successTitle: string, succ
       message: "Install the app and open it once",
       style: Toast.Style.Failure,
       primaryAction: {
-        title: "Open Repository",
-        onAction: () => open(APP_REPO_URL),
+        title: "Open Website",
+        onAction: () => open(APP_WEBSITE_URL),
       },
     });
     return;
