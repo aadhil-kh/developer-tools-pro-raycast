@@ -1,5 +1,7 @@
 # DevT Pro Tools
 
+<a href="https://www.raycast.com/devtpro/devt-pro-tools" title="Install DevT Pro Tools from the Raycast Store"><img src="https://www.raycast.com/devtpro/devt-pro-tools/install_button@2x.png?v=1.1" height="64" alt="Install DevT Pro Tools from the Raycast Store" /></a>
+
 Search, pin, and launch DevT Pro tools from Raycast on macOS and Windows. This extension connects Raycast to the DevT Pro app. The app and its source code are not included here.
 
 DevT Pro is a paid app, sold separately as a one-time purchase. This extension only launches tools in DevT Pro and doesn't include or unlock any of them. See [devtpro.app](https://devtpro.app) for pricing.
@@ -9,6 +11,12 @@ DevT Pro is a paid app, sold separately as a one-time purchase. This extension o
 - DevT Pro, purchased from the [Mac App Store](https://apps.apple.com/app/developer-tools-pro/id6755523203?platform=mac) or the [Microsoft Store](https://apps.microsoft.com/detail/9pfjq9nkgwd0). The purchase includes every tool the extension lists.
 - DevT Pro installed and opened at least once. Opening the app registers its `devtpro://` link with your system, and this extension uses that link to launch tools.
 - Raycast for macOS (Raycast 2, or v1.104.16 or later) or Raycast for Windows.
+
+## Install
+
+Install **DevT Pro Tools** from the [Raycast Store](https://www.raycast.com/devtpro/devt-pro-tools), or search for "DevT Pro Tools" in Raycast's **Store** command. Raycast keeps the extension up to date for you.
+
+You don't need to clone or build this repository to use the extension.
 
 ## Usage
 
